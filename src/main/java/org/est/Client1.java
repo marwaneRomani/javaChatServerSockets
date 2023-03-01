@@ -1,11 +1,10 @@
 package org.est;
 
-import org.est.chat.Message;
-import org.est.chat.User;
+import org.est.chatElements.Message;
+import org.est.chatElements.User;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.UUID;
 
 public class Client1 {
 
@@ -19,16 +18,13 @@ public class Client1 {
         this.user = client1;
     }
 
-    private void sendMessage(String m) {
-        User client2 = new User();
-        client2.setId("client 2");
-        client2.setName("client 2");
+    private void sendMessage(String m, User to ) {
 
         Message message = new Message();
         message.setId("message 1");
         message.setMessage(m);
         message.setSender(this.user);
-        message.setReceiver(client2);
+        message.setReceiver(to);
 
         try {
             Socket socket = new Socket("localhost", 4002);
@@ -55,6 +51,12 @@ public class Client1 {
     }
 
     public static void main(String[] args) {
-        new Client1().sendMessage("hello client 2 this is client 1.");
+        User client2 = new User();
+        client2.setId("client 2");
+        client2.setName("client 2");
+
+        Client1 client1 = new Client1();
+
+        client1.sendMessage("hello client 2 this is client 1.", client2);
     }
 }

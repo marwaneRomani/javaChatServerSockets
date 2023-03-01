@@ -1,7 +1,7 @@
 package org.est.server;
 
-import org.est.chat.Message;
-import org.est.chat.User;
+import org.est.chatElements.Message;
+import org.est.chatElements.User;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -58,6 +58,7 @@ public class ChatServer extends Thread {
 
                 for (Message pendingMessage : pendingMessagesList) {
                     objectOutputStream.writeObject(pendingMessage);
+                    pendindMessages.remove(pendingMessage);
                 }
 
                 while (!socket.isClosed()) {

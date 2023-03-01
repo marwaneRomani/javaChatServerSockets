@@ -1,7 +1,7 @@
 package org.est;
 
-import org.est.chat.Message;
-import org.est.chat.User;
+import org.est.chatElements.Message;
+import org.est.chatElements.User;
 
 import java.io.*;
 import java.net.Socket;

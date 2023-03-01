@@ -1,4 +1,4 @@
-package org.est.chat;
+package org.est.chatElements;
 
 import lombok.Data;
 
